@@ -1,0 +1,16 @@
+1) touch new_file.txt => membuat file baru (perhatikan directorinya)
+2) nano/vi(milih apa aja) nama_file.sh => membuat shell bash
+3) ls => cek dulu apa udah ada
+4) ls -l name_file.sh
+5) ./nama_file.sh => melihat filenya
+6) chmod +x nama_file.sh => menonaktikan akses filenya
+7) zip -r test2.zip test2
+
+
+https://github.com/arsitektur-jaringan-komputer/Modul-Sisop/tree/master/Modul1
+https://github.com/arsitektur-jaringan-komputer/Modul-Sisop/tree/master/Modul2
+https://github.com/arsitektur-jaringan-komputer/Modul-Sisop/tree/master/Modul3
+
+
+
+https://docs.google.com/document/d/1XP8xG5uaBfsujyngqTTgNqAWAEteUlh62J2H2X-2r-k/edit

@@ -1,0 +1,105 @@
+https://labs.play-with-docker.com/
+
+docker run -d -p 8080:80 nginx
+
+cat > Dockerfile <<EOF
+FROM ubuntu:16.04
+
+# Install dependencies
+RUN apt-get update
+RUN apt-get -y install apache2
+
+# Install apache and write hello world message
+RUN echo 'Hello World!' > /var/www/html/index.html
+
+# Configure apache
+RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh
+RUN echo 'mkdir -p /var/run/apache2' >> /root/run_apache.sh
+RUN echo 'mkdir -p /var/lock/apache2' >> /root/run_apache.sh
+RUN echo '/usr/sbin/apache2 -D FOREGROUND' >> /root/run_apache.sh
+RUN chmod 755 /root/run_apache.sh
+
+## Dockerfile
+
+cat > Dockerfile <<EOF
+FROM ubuntu:16.04
+
+# Install dependencies
+RUN apt-get update
+RUN apt-get -y install apache2
+
+# Install apache and write hello world message
+RUN echo 'Hello World!' > /var/www/html/index.html
+
+# Configure apache
+RUN echo '. /etc/apache2/envvars' > /root/run_apache.sh
+RUN echo 'mkdir -p /var/run/apache2' >> /root/run_apache.sh
+RUN echo 'mkdir -p /var/lock/apache2' >> /root/run_apache.sh
+RUN echo '/usr/sbin/apache2 -D FOREGROUND' >> /root/run_apache.sh
+RUN chmod 755 /root/run_apache.sh
+
+EXPOSE 80
+
+CMD /root/run_apache.sh
+EOF
+
+docker build -t apache-hello .
+
+docker run -d -p 6080:80 apache-hello
+
+docker run -it -p 9090:80 --mount type=bind,source=$(pwd),target=/usr/local/go/src/simple-go-helloworld -w /usr/local/go/src/simple-go-helloworld golang:1.15
+
+docker run -d -p 7080:3000 --name=local-cache memcached
+
+cat > hello.Dockerfile <<EOF
+FROM golang:1.15 AS builder
+WORKDIR /usr/local/go/src/simple-go-helloworld
+COPY . .
+RUN make build
+
+FROM scratch
+WORKDIR /
+COPY --from=builder /usr/local/go/src/simple-go-helloworld/simple-go-helloworld app
+EXPOSE 80
+ENTRYPOINT ["/app"]
+EOF
+
+git clone https://github.com/memcachier/examples-expressjs.git
+
+docker run -d -p 7080:3000 --name=local-cache memcached
+
+docker run -it --mount type=bind,source=$(pwd),target=/app -w /app --network=container:local-cache node bash
+
+cat > express.Dockerfile <<EOF
+FROM node
+WORKDIR /app
+COPY . .
+RUN npm install
+CMD ["node", "app.js"]
+EOF
+
+cat > docker-compose.yaml <<EOF
+version: "3.3"
+services:
+  memcached:
+    image: memcached
+
+  express:
+    build:
+      context: .
+      dockerfile: express.Dockerfile
+    depends_on:
+    - memcached
+    environment:
+      PORT: "3050"
+      MEMCACHIER_SERVERS: database
+    ports:
+    - target: 3050
+      published: 8080
+      protocol: tcp
+      mode: host
+    links:
+      - "memcached:database"
+EOF
+
+docker-compose up -d

@@ -1,0 +1,12 @@
+ps 
+man ps
+ps aux
+ps aux | grep head
+pstree
+htop
+
+1. ping google.com
+2. ps aux / ps aux | grep head / pstree
+3. pstree (pid)
+4. kill (pid)
+5. 

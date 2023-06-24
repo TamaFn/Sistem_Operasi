@@ -1,0 +1,72 @@
+Bab 5 = Concurrency 
+
+Soal Posttest
+1. Semaphore = Sebuah integer yang digunakan untuk bertukar sinyal antar proses
+2. Race condition = Kondisi dimana dua proses atau lebih membaca dan menulis suatu shared resource dan hasil akhirnya ditentukan oleh waktu eksekusinya
+3. Atomic operation = Sederet kode yang tampaknya tidak bisa dikerjakan secara terpisah
+4. Direct Addresing = Jenis addressing mengirimkan pesan pada suatu proses ID tertentu
+5. Deadlock = Suatu kondisi proses-proses tidak bisa berjalan karena saling menunggu proses yang lain
+6. Mutual exclusion = Memastikan sebuah proses yang sedang mengakses shared resources tidak diinterupsi oleh proses lain dan mengakses bagian kode yang sama 
+7. Massage Passing = Sebuah string yang digunakan untuk mengirimkan pesan ke proses lain
+8. Starvation = Kondisi dimana proses bisa berjalan tapi diabaikan oleh scheduler yang tidak pernah berjalan
+9. Livelock = Proses-proses bergantian mengubah statenya sebagai respon dari perubahan state process yang lain tanpa melakukan kegiatan yang penting
+10. Critical section = Bagian dari kode yang mengakses shared resourcces yang tidak boleh dieksekusi oleh suatu proses ketika process lain sedang mengeksekusi bagian kode yang sama
+
+Multiprogramming: 
+The management of multiple processes within a uniprocessor system.
+• Multiprocessing: 
+The management of multiple processes within a multiprocessor.
+• Distributed processing: 
+The management of multiple processes executing on multiple, distributed computer systems.
+
+
+
+Bab 6 Deadlock and Memory Management 
+
+1. Dynamic Partitioning = Metode partitioning dimana external fragmentation terjadi
+2. Segmentation = Mekanisme partisi memori menjadi bagian kecil dengan panjang bervariasi dan membagi proses menjadi bagian-bagian kecil sesuai panjang lokasi yang tersedia
+3. Page = Blok dengan panjang tetap pada main memory 
+4. Segment = Blok dengan panjang bervarisasi pada secondary memory
+5. Fixed Partitioning = Metode partitioning dimana internal fragmentation terjadi
+6. Best fit = Algoritma pencarian blok pada dynamic partitioning yang memiliki performa paling buruk
+7. Frame = Blok dengan panjang tetap pada seccondary memory
+8. Yang merupakan mekanisme deadlock = 
+- Resource Ordering
+- Preemption
+- Memesan semua resource pada satu waktu 
+9. Yang merupakan kondisi deadlock = 
+- Mutual Exclusion
+- No Preemption
+- Hold and Wait 
+10. Paging = Mekanisme partisi memori menjadi bagian kecil dengan panjang tetap dan membagi setiap proses menjadi bagian yang sama panjang 
+
+
+Bab 7  Virtual Memory
+
+1. Optimal = Replacement policy yang mengganti page yang akan diakses lagi paling lama di masa depan
+2. Next fit = Menempatkan page di bagian main memory yang kosong setelah lokasi penempatan terakhir
+3. Local Replacement = Replacemnet policy scope yang mengganti page pada proses yang terkena page fault saja
+4. LRU = Replacemrnt policy yang menganti page jarang diakses
+5. Fetch policy = Tidak perlu diperhatikan dalam mendesain virtual memory pada sistem operasi
+6. FIFO = Replacement policy yang mengganti page yang pertama masuk
+7. Demand paging = Policy bagian dari proses yang perlu dibawa ke main memory tergantung permintaan
+8. Virtual memory = konsep dimana data pada secondary bisa dialatkan seolah-olah berada pada main memory
+9. Prepaging = Policy bagian dari proses yang perlu dibawa ke main memory tergantung permintaan plus beberapa bagian tambahan
+10. Clock = Replacement policy yang mengganti page yang memiliki use bit 0
+
+
+Bab 8 IO Management
+
+1. Seek time = Tidak termasuk dalam disk transder time
+2. RAID 5 = RAID yang menyebarkan datanya di semua disk dan meletakkan parity bit di semua disk juga
+3. RAID 0 = RAID  yang tidak menyediakan fitur redudansi
+4. RAID = Teknologi yang menggabungkan beberapa disk menjadi sebuah logical unit
+5. SCAN = Mekanisme pengaksesan disk, yang mendahulukan data yang sesuai dengan arah pergerakan arm
+6. C-SCAN = Mekanisme pengaksesan disk, yang mendahulukan data yang sesuai dengan arah pergerakan arm, tetapi hanya satu arah
+7. SSTF/SSTN Mekanisme pengaksesan disk, yang mendahulukan data dimana pergerakan disk paling dikit
+8. Shortest Serviec Time First = Sama kayak no 7
+9.  Wait-and-Retry I/O = Teknik pengaksesan Input/Output yang membutuhkan proses untuk blocked sampai data yang diminta terpenuhi
+10. I/O Buffering = Digunakan untuk mempercepat akses dari I/O devices ke proses
+
+
+
